@@ -14,7 +14,28 @@ conn = psycopg2.connect(
 )
 cursor = conn.cursor(cursor_factory=RealDictCursor)
 
+# API to authenticate user
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
 
+    # Query the database for the provided student_id
+    cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
+    user = cursor.fetchone()
+    if user:
+
+        if user['username'] == username and user['password'] == password:
+            return jsonify({'message': 'Login successful',
+                            'isValid': True,
+                            }
+                           )
+        else:
+            return jsonify({'message': 'Invalid Credentials'}), 401
+    else:
+        return jsonify({'message': 'user not found'}), 404
+        
 # API to list all users
 @app.route('/users', methods=['GET'])
 def get_users():
