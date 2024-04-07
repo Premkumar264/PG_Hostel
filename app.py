@@ -53,7 +53,47 @@ def get_user(student_id):
     else:
         return jsonify({'message': 'Student not found'}), 404
 
-
+# API to edit details of the student
+@app.route('/user/<string:student_id>', methods=['PUT'])
+def update_user(student_id):
+    data = request.json
+    cursor.execute("SELECT * FROM students WHERE student_id = %s", (student_id,))
+    student = cursor.fetchone()
+    if student:
+        update_query = """
+            UPDATE students 
+            SET module = %s, 
+                first_name = %s, 
+                last_name = %s, 
+                mail_id = %s, 
+                mobile = %s, 
+                country = %s, 
+                parent_name = %s, 
+                block_name = %s, 
+                room_no = %s 
+            WHERE student_id = %s
+        """
+        try:
+            cursor.execute(update_query, (
+                data.get('module', student['module']),
+                data.get('first_name', student['first_name']),
+                data.get('last_name', student['last_name']),
+                data.get('mail_id', student['mail_id']),
+                data.get('mobile', student['mobile']),
+                data.get('country', student['country']),
+                data.get('parent_name', student['parent_name']),
+                data.get('block_name', student['block_name']),
+                data.get('room_no', student['room_no']),
+                student_id
+            ))
+            conn.commit()
+            return jsonify({'message': 'Student details updated successfully'})
+        except psycopg2.IntegrityError:
+            conn.rollback()
+            return jsonify({'message': 'Error: Could not update student details. Student ID already exists'}), 400
+    else:
+        return jsonify({'message': 'Student not found'}), 404
+   
 
 if __name__ == '__main__':
     app.run(debug=True)
