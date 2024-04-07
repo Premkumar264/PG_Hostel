@@ -52,6 +52,19 @@ def get_user(student_id):
         return jsonify({'results': student})
     else:
         return jsonify({'message': 'Student not found'}), 404
+    
+# API to add user details
+@app.route('/users', methods=['POST'])
+def add_user():
+    try:
+        data = request.json
+        cursor.execute("INSERT INTO students (student_id, module, first_name, last_name, mail_id, mobile, country, parent_name, block_name, room_no) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                    (data.get('student_id'), data.get('module'), data.get('first_name'), data.get('last_name'), data.get('mail_id'), data.get('mobile'), data.get('country'), data.get('parent_name'), data.get('block_name'), data.get('room_no')))
+        conn.commit()
+        return jsonify({'message': 'User added successfully'}), 201
+    except psycopg2.Error as e:
+        print("Error inserting data into database:", e)
+        return jsonify({'message': 'Internal Server Error'}), 500
 
 # API to edit details of the student
 @app.route('/user/<string:student_id>', methods=['PUT'])
