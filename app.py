@@ -56,14 +56,13 @@ def get_user(student_id):
   # API to search user based on StudentID
 @app.route('/users/<string:student_id>', methods=['GET'])
 def get_user(student_id):
-    cursor.execute("SELECT * FROM students" )
+    cursor.execute("SELECT * FROM students WHERE student_id = %s", (student_id,))
     student = cursor.fetchone()
     if student:
         return jsonify({'results': student})
     else:
         return jsonify({'message': 'Student not found'}), 404
-
-
+  
 # API to add user details
 @app.route('/users', methods=['POST'])
 def add_user():
