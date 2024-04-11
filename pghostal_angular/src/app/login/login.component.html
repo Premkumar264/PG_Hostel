@@ -1,0 +1,8 @@
+<div class="log-form">
+    <h2 class="">Login to your account</h2>
+    <form [formGroup]="loginForm">
+      <input type="text" title="username" placeholder="Username" formControlName="username"/>
+      <input type="password" title="username" placeholder="Password" formControlName="password"/>
+      <button type="submit" class="btn btn-primary" (click)="routeUser()">Login</button>
+    </form>
+  </div>
