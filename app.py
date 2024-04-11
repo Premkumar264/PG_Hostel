@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 import psycopg2
 from psycopg2.extras import RealDictCursor
-
+from psycopg2.extras import RealDictCursor
 
 app = Flask(__name__)
+CORS(app, support_credentials=True)
 
 # Connect to your PostgreSQL database
 conn = psycopg2.connect(
@@ -53,15 +54,7 @@ def get_user(student_id):
     else:
         return jsonify({'message': 'Student not found'}), 404
 
-  # API to search user based on StudentID
-@app.route('/users/<string:student_id>', methods=['GET'])
-def get_user(student_id):
-    cursor.execute("SELECT * FROM students WHERE student_id = %s", (student_id,))
-    student = cursor.fetchone()
-    if student:
-        return jsonify({'results': student})
-    else:
-        return jsonify({'message': 'Student not found'}), 404
+
   
 # API to add user details
 @app.route('/users', methods=['POST'])
@@ -75,6 +68,18 @@ def add_user():
     except psycopg2.Error as e:
         print("Error inserting data into database:", e)
         return jsonify({'message': 'Internal Server Error'}), 500
+
+# API to delete user
+@app.route('/users/<string:student_id>', methods=['DELETE'])
+def delete_user(student_id):
+    try:
+        cursor.execute("DELETE FROM students WHERE student_id = %s", (student_id,))
+        conn.commit()
+        return jsonify({'message': 'User deleted successfully'})
+    except psycopg2.Error as e:
+        print("Error deleting data from database:", e)
+        return jsonify({'message': 'Internal Server Error'}), 500
+
 
 # API to edit details of the student
 @app.route('/user/<string:student_id>', methods=['PUT'])
