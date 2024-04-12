@@ -7,13 +7,12 @@ import { HttpClient } from '@angular/common/http';
 export class UserService {
 
   baseUrl:string = 'http://127.0.0.1:5000'
-  jsonUrl:string = 'http://localhost:3000'
+
 
   constructor(private http:HttpClient) { }
 
   getUsers(){
     return this.http.get(this.baseUrl + '/users')
-    // return this.http.get(this.jsonUrl + '/users')
   }
 
   getLogin(form:any){
@@ -27,7 +26,6 @@ export class UserService {
 
   editUser(id:number,form:any){
     return this.http.put(this.baseUrl + '/user/'+ id , form)
-    // return this.http.put(this.jsonUrl + '/users/'+ id , form)
   }
 
   deleteUser(id:number){
