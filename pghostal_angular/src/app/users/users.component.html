@@ -104,4 +104,24 @@
         <th></th>
       </tr>
     </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th>{{user.student_id}}</th>
+        <th>{{user.first_name}}</th>
+        <th>{{user.last_name}}</th>
+        <th>{{user.parent_name}}</th>
+        <th>{{user.mail_id}}</th>
+        <th>{{user.module}}</th>
+        <th>{{user.mobile}}</th>
+        <th>{{user.block_name}}</th>
+        <th>{{user.room_no}}</th>
+        <th>{{user.country}}</th>
+        <th>
+            <button class="btn btn-primary" (click)="editUserTitle(user)"  data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+        </th>
+        <th>
+            <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
+        </th>
+      </tr>
+    </tbody>
   </table>
