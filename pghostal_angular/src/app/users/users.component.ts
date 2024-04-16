@@ -41,11 +41,38 @@ export class UsersComponent implements OnInit{
 
   }
 
+  addUserTitle(){
+    this.formTitle='Add User';
+  }
+
+  editUserTitle(user:any){
+    this.formTitle='Edit User';
+
+    const data = {
+      firstName: user.first_name,
+      lastName: user.last_name,
+      email: user.mail_id,
+      parentName: user.parent_name,
+      mobile: user.mobile,
+      module: user.module,
+      roomNumber: user.room_no,
+      blockName: user.block_name,
+      country: user.country,
+      studentId: user.student_id
+    }
+
+    this.userForm.setValue(data)
+  }
+
+ 
+
  
 
   logout():void{
     this.router.navigate(['/login']);
   }
+
+
 
 
   ngOnInit(){
