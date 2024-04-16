@@ -65,6 +65,56 @@ export class UsersComponent implements OnInit{
   }
 
  
+  saveUser(){
+    if(this.formTitle==='Add User'){
+
+      const payload = {
+      first_name: this.userForm.value.firstName,
+      last_name: this.userForm.value.lastName,
+      parent_name: this.userForm.value.parentName,
+      mobile: this.userForm.value.mobile,
+      mail_id: this.userForm.value.email,
+      module: this.userForm.value.module,
+      room_no: this.userForm.value.roomNumber,
+      block_name: this.userForm.value.blockName,
+      country: this.userForm.value.country,
+      student_id: this.userForm.value.studentId
+      }
+
+
+      this.userService.addUser(payload).subscribe((response:any)=>{
+        this.getAllUsers()
+        this.clearForm();
+      }, error => {
+        console.log(error, 'error')
+        alert(error.error.message);
+      })
+    }
+    else{
+
+      const payload = {
+        first_name: this.userForm.value.firstName,
+        last_name: this.userForm.value.lastName,
+        parent_name: this.userForm.value.parentName,
+        mobile: this.userForm.value.mobile,
+        mail_id: this.userForm.value.email,
+        module: this.userForm.value.module,
+        room_no: this.userForm.value.roomNumber,
+        block_name: this.userForm.value.blockName,
+        country: this.userForm.value.country
+        }
+
+
+      this.userService.editUser(this.userForm.value.studentId,payload).subscribe((response:any)=>{
+        this.getAllUsers()
+        this.clearForm()
+      }, error => {
+        console.log(error, 'error')
+        alert(error.error.message);
+      })
+    }
+  }
+  
   clearForm(){
     this.userForm.reset()
   }
