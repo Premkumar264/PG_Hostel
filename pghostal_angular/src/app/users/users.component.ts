@@ -65,8 +65,21 @@ export class UsersComponent implements OnInit{
   }
 
  
+  clearForm(){
+    this.userForm.reset()
+  }
 
- 
+  deleteUser(user:any){
+    this.userService.deleteUser(user.student_id).subscribe((response:any)=>{
+      this.getAllUsers()
+    })
+  }
+  getAllUsers(){
+    this.userService.getUsers().subscribe((data:any)=>{
+      this.users = data['results'];
+      this.allUsers = data['results'];
+    })
+  } 
 
   logout():void{
     this.router.navigate(['/login']);
@@ -76,7 +89,7 @@ export class UsersComponent implements OnInit{
 
 
   ngOnInit(){
-    
+    this.getAllUsers()
   }
 
 
