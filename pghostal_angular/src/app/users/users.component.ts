@@ -81,6 +81,18 @@ export class UsersComponent implements OnInit{
     })
   } 
 
+  searchUser(id:string){
+    if(id){
+      this.users = this.allUsers.filter((user:any)=>
+        user.student_id.includes(id)
+      )
+    }
+    else{
+      this.users = this.allUsers;
+    }
+  }
+
+  
   logout():void{
     this.router.navigate(['/login']);
   }
