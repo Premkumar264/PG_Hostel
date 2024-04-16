@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
-import { loginGuard } from './login.guard';
+
 
 const routes: Routes = [
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path:'user',
     component:UsersComponent,
-    // canActivate:[loginGuard]
+    
   }
 ];
 
