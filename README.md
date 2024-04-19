@@ -22,3 +22,50 @@ The PG Hostel Management System is a user-friendly web application designed to s
 
 ## Installation
 ![installation](screenshorts/image.png)
+
+
+- ### Create a new project
+
+![Create a New Project](screenshorts/image_1.png)
+
+## Code scaffolding
+
+Run ng generate component component-name to generate a new component. You can also use ng generate directive|pipe|service|class|guard|interface|enum|module.
+![code scaffolding](screenshorts/image_2.png)
+
+## Development server
+
+Run ng serve for a dev server. Navigate to http://localhost:4200/. The application will automatically reload if you change any of the source files.
+![ng serve](screenshorts/image_3.png)
+
+## Build
+
+Run ng build to build the project. The build artifacts will be stored in the dist/ directory.
+
+# Python flask Documentation
+
+## Build
+
+Run ng build to build the project. The build artifacts will be stored in the dist/ directory.
+
+# Python flask Documentation
+
+
+![py flask documentation](screenshorts/image-8.png)
+
+
+Screenshot of the application:
+
+- 
+![alt text](screenshorts/image-4.png)
+![alt text](screenshorts/image-5.png)
+![alt text](screenshorts/image-6.png)
+![alt text](screenshorts/image-7.png)
+
+# Reference
+- https://nodejs.org/en
+- https://angular.io/cli
+- https://www.postgresql.org/docs/
+- https://getbootstrap.com/
+
+- YouTube reference: https://www.youtube.com/watch?v=K-D-VUEC_J8&list=PLAtyf1uTNHNWW3ualgrYQ7Jf8DiZ_ijha
