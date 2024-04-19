@@ -44,13 +44,6 @@ Run ng build to build the project. The build artifacts will be stored in the dis
 
 # Python flask Documentation
 
-## Build
-
-Run ng build to build the project. The build artifacts will be stored in the dist/ directory.
-
-# Python flask Documentation
-
-
 ![py flask documentation](screenshorts/image-8.png)
 
 
