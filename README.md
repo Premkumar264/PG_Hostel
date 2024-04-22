@@ -49,7 +49,7 @@ Run ng build to build the project. The build artifacts will be stored in the dis
 
 Screenshot of the application:
 
-- 
+ 
 ![alt text](screenshorts/image-4.png)
 ![alt text](screenshorts/image-5.png)
 ![alt text](screenshorts/image-6.png)
@@ -62,3 +62,4 @@ Screenshot of the application:
 - https://getbootstrap.com/
 
 - YouTube reference: https://www.youtube.com/watch?v=K-D-VUEC_J8&list=PLAtyf1uTNHNWW3ualgrYQ7Jf8DiZ_ijha
+                     https://www.youtube.com/watch?v=oQWkuJhSMCQ&t=3395s
